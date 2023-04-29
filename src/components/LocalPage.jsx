@@ -1,13 +1,14 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Row, Col, Form, FormControl, Table, Button } from 'react-bootstrap'
+import MapPage from './MapPage'
 
 const LocalPage = () => {
     const [addresses, setAddresses] = useState([])
     const [query, setQuery] = useState('인하대학교')
     const [page, setPage] = useState(1)
     const [loading, setLoading] = useState(false)
-    const [isEnd, setIsEnd] = useState(false)
+    const [isEnd, setIsEnd] = useState(true)
     const [total, setTotal] = useState(0)
 
     const getdata = async () => {
@@ -61,6 +62,7 @@ const LocalPage = () => {
                                 <td>장소명</td>
                                 <td>주소</td>
                                 <td>전화번호</td>
+                                <td>버튼</td>
                             </tr>
                         </thead>
 
@@ -70,6 +72,8 @@ const LocalPage = () => {
                                     <td>{address.place_name}</td>
                                     <td>{address.address_name}</td>
                                     <td>{address.phone}</td>
+                                    <td><MapPage address={address}/></td>
+                                    
                                 </tr>
                             ))}
                         </tbody>
