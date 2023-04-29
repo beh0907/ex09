@@ -27,7 +27,7 @@ const BookPage = () => {
         setLoading(false)
     }
 
-    const onSubmit = e => {
+    const onSearch = e => {
         e.preventDefault()
         setPage(1)
         getdata()
@@ -46,10 +46,11 @@ const BookPage = () => {
 
                 <Row>
                     <Col md={3}>
-                        <Form onSubmit={onSubmit}>
+                        <Form onSubmit={onSearch}>
                             <Form.Control value={query} onChange={e => setQuery(e.target.value)} placeholder='검색어'></Form.Control>
                         </Form>
-                        검색 건 : {total}
+
+                        <Col>검색 수: {total} 건</Col>
                     </Col>
                 </Row>
                 <Row>
